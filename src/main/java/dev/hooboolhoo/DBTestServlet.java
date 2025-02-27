@@ -20,7 +20,6 @@ import dev.hooboolhoo.config.DataSource;
 @WebServlet("/dbtest")
 public class DBTestServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    
 
     @Override
 	public void init() throws ServletException {

@@ -24,8 +24,6 @@ public class DataSource {
         try {
         	Class.forName("com.mysql.cj.jdbc.Driver");
         	Properties properties = (Properties) context.getAttribute("properties");
-    			
-    			System.out.println("!");
     			 
     			// 필수 설정값 적용
                 config.setJdbcUrl(properties.getProperty("jdbcUrl"));
@@ -63,8 +61,6 @@ public class DataSource {
                             break;
                     }
                 }
-                
-                System.out.println("!");
            
             dataSource = new HikariDataSource(config);
         	
