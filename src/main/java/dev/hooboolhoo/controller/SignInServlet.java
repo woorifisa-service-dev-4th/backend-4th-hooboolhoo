@@ -25,7 +25,7 @@ public class SignInServlet extends HttpServlet {
         String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost:3306/hooboolhoo";
         String USER = "root";
-        String PASS = "021326cc";
+        String PASS = "1234";
 
         String user_id = "";
         String user_password = "";

@@ -1,9 +1,6 @@
 package dev.hooboolhoo.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/*")
+import dev.hooboolhoo.config.DataSource;
+
+@WebServlet("/hooboolhoo/*")
 public class FrontController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -31,7 +30,7 @@ public class FrontController extends HttpServlet {
         String uri = request.getRequestURI();
         String[] uriParts = uri.split("/");
         
-      
+        DataSource.init(getServletContext());
 
         // 요청 URI에 따라 처리할 서블릿 선택
         if (uriParts.length > 1) {
@@ -49,6 +48,11 @@ public class FrontController extends HttpServlet {
                     break;
                 case "game":
                     break;
+                    
+                case "createGame":
+                	GameCreation.handleRequest(request, response, getServletContext());
+                    break;
+                    
                 default:
 
                     break;
