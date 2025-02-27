@@ -9,4 +9,10 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <context-param>
+    <param-name>configFilePath</param-name>
+    <param-value>/WEB-INF/db.properties</param-value>
+</context-param>
+  
 </web-app>
