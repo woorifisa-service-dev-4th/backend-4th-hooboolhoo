@@ -1,47 +1,56 @@
 package dev.hooboolhoo.controller;
 
-import java.sql.*;
+import dev.hooboolhoo.DAO.DataAccessor;
+import dev.hooboolhoo.model.User;
 
-public class LoginController {
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
-    private static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/hooboolhoo";
-    private static final String USER = "root";
-    private static final String PASS = "021326cc";
+public class LoginController implements Controller {
+	private List<User> userList;
+    
+	@Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
 
-    public boolean authenticate(String userId, String password) {
-        String user_password = "";
-        String user_nickname = "";
+        String userId = request.getParameter("id");
+        String userPassword = request.getParameter("password");
+        DataAccessor dataAccessor = new DataAccessor();
+        
+        userList = dataAccessor.getUserList(request.getServletContext());
 
-        try {
-            // 1. DB 연결
-            Class.forName(DRIVER_NAME);
-            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+        // 사용자 목록을 가져오기
+        List<User> userList = dataAccessor.getUserList(request.getServletContext());
 
-            // 2. 사용자 정보 조회
-            String query = "SELECT password, nickname FROM user WHERE id = ?";
-            PreparedStatement pstmt = connection.prepareStatement(query);
-            pstmt.setString(1, userId);
-            ResultSet rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-                user_password = rs.getString("password");
-                user_nickname = rs.getString("nickname");
+        // 사용자 목록을 순회하면서 ID와 비밀번호를 확인하기
+        for (User user : userList) {
+            if (user.getId().equals(userId)) {
+                // 아이디가 존재할 경우, 비밀번호 확인하기
+                if (user.getPassword().equals(userPassword)) {
+                    // 로그인 성공
+                    out.println("<script>alert('" + user.getNickname() + "님, 환영합니다.'); location.href=\"main.html\";</script>");
+                    out.flush();
+                    out.close();
+                    return;  // 로그인 성공 후 종료하기
+                } else {
+                    // 비밀번호 틀림
+                    out.println("<script>alert('비밀번호가 틀렸습니다. 다시 로그인해주세요.'); location.href=\"index.html\";</script>");
+                    out.flush();
+                    out.close();
+                    return;  // 비밀번호 틀리면 종료
+                }
             }
-
-            connection.close();
-
-            // 3. 비밀번호 비교
-            if (user_password.equals(password)) {
-                System.out.println(user_nickname + "님, 환영합니다.");  // 로그인 성공 메시지 출력
-                return true;
-            } else {
-                System.out.println("비밀번호가 틀렸습니다.");
-                return false;
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-            return false;
         }
+
+        // 아이디가 존재하지 않는 경우
+        out.println("<script>alert('존재하지 않는 아이디입니다. 다시 로그인해주세요.'); location.href=\"index.html\";</script>");
+        out.flush();
+        out.close();
     }
 }
