@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임 입력 폼</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, input, select, button {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h2>게임 만들기</h2>
+<form id="gameForm">
+    <label for="title">게임 제목:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="description">게임 설명:</label>
+    <input type="text" id="description" name="description" required>
+
+    <label for="category">게임 카테고리:</label>
+    <select id="category" name="category" required>
+        <option value="food">음식</option>
+        <option value="people">인물</option>
+        <option value="activity">활동</option>
+        <option value="else">기타</option>
+    </select>
+
+    <label for="choice1">첫 번째 선택지:</label>
+    <input type="text" id="choice1" name="choice1" required>
+
+    <label for="choice2">두 번째 선택지:</label>
+    <input type="text" id="choice2" name="choice2" required>
+
+    <button type="submit">만들기</button>
+</form>
+
+<script>
+    document.getElementById('gameForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const category = document.getElementById('category').value;
+        const choice1 = document.getElementById('choice1').value;
+        const choice2 = document.getElementById('choice2').value;
+
+        console.log("게임 제목:", title);
+        console.log("게임 설명:", description);
+        console.log("게임 카테고리:", category);
+        console.log("첫 번째 선택지:", choice1);
+        console.log("두 번째 선택지:", choice2);
+
+        alert('게임 정보가 제출되었습니다!');
+    });
+</script>
+</body>
+</html>
