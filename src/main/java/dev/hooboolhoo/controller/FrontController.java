@@ -12,26 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/hooboolhoo")
 public class FrontController extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
     private Map<String, Controller> controllerMap = new HashMap<>();
 
     public FrontController() {
-        // 요청 경로와 해당 처리 클래스를 매핑
-        controllerMap.put("/login", new LoginController());  // 로그인 경로 추가
+        controllerMap.put("/login", new LoginController());
     }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 요청 경로에 맞는 컨트롤러 찾기
         String path = req.getPathInfo();
 
-        // 경로에 해당하는 컨트롤러가 있으면 실행
         Controller controller = controllerMap.get(path);
-        if (controller != null) {
-            controller.execute(req, resp);  // 로그인 컨트롤러 실행
-        } else {
-            resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Page not found");
-        }
+        controller.execute(req, resp);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,38 +36,34 @@ public class FrontController extends HttpServlet {
     }
 
     private void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 요청 URI 확인
         String uri = request.getRequestURI();
         String[] uriParts = uri.split("/");
+        
+        
 
-        if (uriParts.length > 1) {
-            String command = uriParts[uriParts.length - 1];
-            LoginController loginController = new LoginController();
-
-            // 요청에 맞는 작업 처리
-            switch (command) {
-                case "login":
-                    // 로그인 요청에 대해 로그인 컨트롤러 실행
-                    loginController.execute(request, response);
-                    break;
-
-                case "signup":
-                 
-                    break;
-
-                case "myPage":
-     
-                    break;
-
-                case "game":
-          
-                    break;
-
-                default:
-                	
-                    response.sendError(HttpServletResponse.SC_NOT_FOUND, "Page not found");
-                    break;
-            }
-        }
+        // 요청 URI에 따라 처리할 서블릿 선택
+//        if (uriParts.length > 1) {
+//            String command = uriParts[uriParts.length - 1];
+//
+//
+//            switch (command) {
+//                case "signup":
+//                	
+//                    break;
+//                case "login":
+//              
+//
+//                    break;
+//                case "myPage":
+//
+//                    break;
+//                case "game":
+//                	
+//                    break;
+//                default:
+//
+//                    break;
+//            } 
+//        }
     }
 }

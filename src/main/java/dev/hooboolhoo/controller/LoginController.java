@@ -24,8 +24,6 @@ public class LoginController implements Controller {
         
         userList = dataAccessor.getUserList(request.getServletContext());
 
-//        User user = dataAccessor.getUserById(request.getServletContext(), userId);
-        
         // 사용자 목록을 가져오기
         List<User> userList = dataAccessor.getUserList(request.getServletContext());
 
