@@ -17,12 +17,12 @@
 </head>
 <body>
 <h2>게임 만들기</h2>
-<form action = "hooboolhoo/createGame" method = "post">
+<form action = "createGame" method = "post">
     <label for="title">게임 제목:</label>
     <input type="text" id="title" name="title" required>
 
-    <label for="description">게임 설명:</label>
-    <input type="text" id="description" name="description" required>
+    <label for="subtitle">게임 소제목:</label>
+    <input type="text" id="subtitle" name="subtitle" required>
 
     <label for="category">게임 카테고리:</label>
     <select id="category" name="category" required>
@@ -33,10 +33,10 @@
     </select>
 
     <label for="choice1">첫 번째 선택지:</label>
-    <input type="text" id="choice1" name="choice1" required>
+    <input type="text" id="choice1" name="left-choice" required>
 
     <label for="choice2">두 번째 선택지:</label>
-    <input type="text" id="choice2" name="choice2" required>
+    <input type="text" id="choice2" name="right-choice" required>
 
     <button type="submit">만들기</button>
 </form>
