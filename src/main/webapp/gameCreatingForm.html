@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임 입력 폼</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, input, select, button {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h2>게임 만들기</h2>
+<form action = "createGame" method = "post">
+    <label for="title">게임 제목:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="subtitle">게임 소제목:</label>
+    <input type="text" id="subtitle" name="subtitle" required>
+
+    <label for="category">게임 카테고리:</label>
+    <select id="category" name="category" required>
+        <option value="food">음식</option>
+        <option value="people">인물</option>
+        <option value="activity">활동</option>
+        <option value="else">기타</option>
+    </select>
+
+    <label for="choice1">첫 번째 선택지:</label>
+    <input type="text" id="choice1" name="left-choice" required>
+
+    <label for="choice2">두 번째 선택지:</label>
+    <input type="text" id="choice2" name="right-choice" required>
+
+    <button type="submit">만들기</button>
+</form>
+</body>
+</html>
