@@ -15,7 +15,6 @@ public class LoginController implements Controller {
     
 	@Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
 
