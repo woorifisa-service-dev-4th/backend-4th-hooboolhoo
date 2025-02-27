@@ -62,7 +62,7 @@ public class FrontController extends HttpServlet {
                 case "game":
                     break;
                 default:
-                    response.sendRedirect("/index.jsp");
+
                     break;
             }
         }
