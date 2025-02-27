@@ -22,15 +22,14 @@ public class FrontController extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 요청 경로에 맞는 controller 찾기
+        // 요청 경로에 맞는 컨트롤러 찾기
         String path = req.getPathInfo();
 
-        // 경로에 해당하는 controller가 있으면 실행
+        // 경로에 해당하는 컨트롤러가 있으면 실행
         Controller controller = controllerMap.get(path);
         if (controller != null) {
             controller.execute(req, resp);  // 로그인 컨트롤러 실행
         } else {
-            // 컨트롤러가 없으면 에러 처리
             resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Page not found");
         }
     }
@@ -60,19 +59,19 @@ public class FrontController extends HttpServlet {
                     break;
 
                 case "signup":
-                    // 회원가입 처리 (추가할 경우)
+                 
                     break;
 
                 case "myPage":
-                    // 마이페이지 처리 (추가할 경우)
+     
                     break;
 
                 case "game":
-                    // 게임 처리 (추가할 경우)
+          
                     break;
 
                 default:
-                    // 잘못된 요청에 대해 404 응답
+                	
                     response.sendError(HttpServletResponse.SC_NOT_FOUND, "Page not found");
                     break;
             }
