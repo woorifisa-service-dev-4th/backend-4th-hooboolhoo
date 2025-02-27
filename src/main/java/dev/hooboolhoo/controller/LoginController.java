@@ -24,6 +24,8 @@ public class LoginController implements Controller {
         
         userList = dataAccessor.getUserList(request.getServletContext());
 
+//        User user = dataAccessor.getUserById(request.getServletContext(), userId);
+        
         // 사용자 목록을 가져오기
         List<User> userList = dataAccessor.getUserList(request.getServletContext());
 
@@ -48,7 +50,7 @@ public class LoginController implements Controller {
         }
 
         // 아이디가 존재하지 않는 경우
-        out.println("<script>alert('존재하지 않는 아이디입니다. 다시 로그인해주세요.'); location.href=\"index.html\";</script>");
+        out.println("<script>alert('존재하지 않는 아이디. 다시 로그인해주세요.'); location.href=\"index.html\";</script>");
         out.flush();
         out.close();
     }
