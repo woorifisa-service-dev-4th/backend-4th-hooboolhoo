@@ -13,12 +13,19 @@
  <table>
  		<tr>
  		    <th>id</th>
+ 		    <th> | </th>
  			<th>제목</th>
+ 			<th> | </th>
  			<th>소제목</th>
+ 			<th> | </th>
  			<th>제작자</th>
+ 			<th> | </th>
  			<th>선택 1</th>
+ 			<th> | </th>
  			<th>개수</th>
+ 			<th> | </th>
  			<th>선택 2</th>
+ 			<th> | </th>
  			<th>개수</th>
  		</tr>
 
@@ -33,12 +40,19 @@
  				<c:forEach items="${requestScope.gameList}" var="game">
  					<tr>
  						<td>${game.id}</td>
+ 						<td> | </td>
  						<td>${game.title}</td>
+ 						<td> | </td>
  						<td>${game.subTitle}</td>
+ 						<td> | </td>
  						<td>${game.author}</td>
+ 						<td> | </td>
  						<td>${game.choices[0].getName()}</td>
+ 						<td> | </td>
  						<td>${game.choices[0].getCount()}</td>
+ 						<td> | </td>
  						<td>${game.choices[1].getName()}</td>
+                        <td> | </td>
                         <td>${game.choices[1].getCount()}</td>
  					</tr>
  				</c:forEach>
@@ -46,5 +60,6 @@
  		</c:choose>
 
  	</table>
+ 	<a href="index.html">HOME</a>
  </body>
  </html>
