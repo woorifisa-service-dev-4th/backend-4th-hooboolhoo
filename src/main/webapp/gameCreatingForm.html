@@ -17,7 +17,7 @@
 </head>
 <body>
 <h2>게임 만들기</h2>
-<form id="gameForm">
+<form action = "hooboolhoo/createGame" method = "post">
     <label for="title">게임 제목:</label>
     <input type="text" id="title" name="title" required>
 
@@ -40,25 +40,5 @@
 
     <button type="submit">만들기</button>
 </form>
-
-<script>
-    document.getElementById('gameForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const title = document.getElementById('title').value;
-        const description = document.getElementById('description').value;
-        const category = document.getElementById('category').value;
-        const choice1 = document.getElementById('choice1').value;
-        const choice2 = document.getElementById('choice2').value;
-
-        console.log("게임 제목:", title);
-        console.log("게임 설명:", description);
-        console.log("게임 카테고리:", category);
-        console.log("첫 번째 선택지:", choice1);
-        console.log("두 번째 선택지:", choice2);
-
-        alert('게임 정보가 제출되었습니다!');
-    });
-</script>
 </body>
 </html>
