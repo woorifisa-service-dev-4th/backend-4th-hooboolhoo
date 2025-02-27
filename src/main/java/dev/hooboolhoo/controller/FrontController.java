@@ -31,19 +31,7 @@ public class FrontController extends HttpServlet {
         String uri = request.getRequestURI();
         String[] uriParts = uri.split("/");
         
-        
-        try {
-        	
-        	 String DB_URL = "jdbc:mysql://192.168.0.216:3306/";
-        	String DATABASE_NAME = "hooboolhoo";
-        	String USER = "root";
-        	 String PASSWORD = "021326cc";
-        	 String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
-        	 Class.forName(DRIVER_NAME);
-        	Connection connection = DriverManager.getConnection(DB_URL + DATABASE_NAME,USER,PASSWORD);
-        } catch (SQLException | ClassNotFoundException e) {
-        	e.printStackTrace();
-        }
+      
 
         // 요청 URI에 따라 처리할 서블릿 선택
         if (uriParts.length > 1) {
