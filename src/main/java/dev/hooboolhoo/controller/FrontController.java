@@ -1,6 +1,11 @@
 package dev.hooboolhoo.controller;
 
 import java.io.IOException;
+<<<<<<< Updated upstream
+=======
+import java.util.HashMap;
+import java.util.Map;
+>>>>>>> Stashed changes
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +20,20 @@ public class FrontController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     public FrontController() {
+<<<<<<< Updated upstream
         super();
+=======
+        controllerMap.put("/signUp", new SignUpController());
+        controllerMap.put("/createGame", new GameCreationController());
+    }
+
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String path = req.getPathInfo();
+
+        Controller controller = controllerMap.get(path);
+        controller.execute(req, resp);
+>>>>>>> Stashed changes
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,9 +54,12 @@ public class FrontController extends HttpServlet {
         if (uriParts.length > 1) {
             String command = uriParts[uriParts.length - 1];
 
+<<<<<<< Updated upstream
             switch (command) {
                 case "signup":
 
+=======
+>>>>>>> Stashed changes
                     break;
                 case "login":
 
